@@ -1,0 +1,581 @@
+import { StyleSheet } from "react-native";
+
+export const stockItemDetailStyles = StyleSheet.create({
+    errorContainer: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: 20,
+    },
+    errorTitle: {
+      fontSize: 22,
+      fontWeight: 'bold',
+      color: '#e74c3c',
+      marginTop: 16,
+      marginBottom: 8,
+    },
+    errorMessage: {
+      fontSize: 16,
+      color: '#7f8c8d',
+      textAlign: 'center',
+      marginBottom: 24,
+    },
+    retryButton: {
+      backgroundColor: '#e74c3c',
+      paddingVertical: 12,
+      paddingHorizontal: 24,
+      borderRadius: 8,
+      marginBottom: 16,
+    },
+    retryButtonText: {
+      color: '#ffffff',
+      fontSize: 16,
+      fontWeight: 'bold',
+    },
+    itemHeaderRow: {
+      flexDirection: 'row',
+      marginBottom: 15,
+    },
+    itemImage: {
+      width: 80,
+      height: 80,
+      borderRadius: 8,
+      marginRight: 15,
+    },
+    placeholderImage: {
+      width: 80,
+      height: 80,
+      borderRadius: 8,
+      backgroundColor: '#f0f0f0',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginRight: 15,
+    },
+    itemHeaderInfo: {
+      flex: 1,
+      justifyContent: 'center',
+    },
+    stockContainer: {
+      marginTop: 10,
+      maxHeight: 350,
+      backgroundColor: '#f5f5f5',
+      borderRadius: 8,
+      paddingVertical: 5,
+    },
+    stockItemContainer: {
+      backgroundColor: 'white',
+      borderRadius: 10,
+      marginVertical: 6,
+      marginHorizontal: 8,
+      padding: 12,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.2,
+      shadowRadius: 2,
+      elevation: 2,
+    },
+    stockHeader: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      paddingBottom: 8,
+      borderBottomWidth: 1,
+      borderBottomColor: '#eee',
+      marginBottom: 8,
+    },
+    stockId: {
+      fontWeight: 'bold',
+      fontSize: 14,
+      color: '#34495e',
+    },
+    stockDate: {
+      fontSize: 12,
+      color: '#7f8c8d',
+    },
+    stockDetailsRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginBottom: 10,
+      paddingVertical: 6,
+      backgroundColor: '#f8f9fa',
+      borderRadius: 6,
+      paddingHorizontal: 8,
+    },
+    stockIconContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    stockDetailText: {
+      marginLeft: 4,
+      fontSize: 13,
+      fontWeight: '500',
+    },
+    stockInfo: {
+      marginTop: 6,
+    },
+    stockInfoItem: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 4,
+    },
+    stockInfoText: {
+      marginLeft: 6,
+      fontSize: 13,
+      color: '#555',
+    },
+    notesContainer: {
+      flexDirection: 'row',
+      marginTop: 6,
+      paddingTop: 6,
+      borderTopWidth: 1,
+      borderTopColor: '#eee',
+    },
+    notesText: {
+      marginLeft: 6,
+      fontSize: 13,
+      color: '#7f8c8d',
+      fontStyle: 'italic',
+      flex: 1,
+    },
+    stockSectionHeader: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginTop: 15,
+      marginBottom: 5,
+      paddingHorizontal: 2,
+    },
+    stockSectionTitle: {
+      marginLeft: 8,
+      fontSize: 16,
+      fontWeight: 'bold',
+      color: '#34495e',
+    },
+    emptyStockContainer: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: 30,
+      backgroundColor: 'white',
+      borderRadius: 8,
+      margin: 10,
+    },
+    emptyStockText: {
+      marginTop: 10,
+      color: '#95a5a6',
+      fontSize: 14,
+      textAlign: 'center',
+    },
+    container: {
+      flex: 1,
+      backgroundColor: '#f9f9f9',
+    },
+    permissionText: {
+      fontSize: 16,
+      textAlign: 'center',
+      margin: 20,
+    },
+    cameraContainer: {
+      flex: 1,
+      position: 'relative',
+    },
+    camera: {
+      flex: 1,
+    },
+    overlay: {
+      ...StyleSheet.absoluteFillObject,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    loadingOverlay: {
+      ...StyleSheet.absoluteFillObject,
+      backgroundColor: 'rgba(0,0,0,0.7)',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    loadingText: {
+      color: '#ffffff',
+      fontSize: 16,
+      marginTop: 10,
+    },
+    scannerBox: {
+      width: 250,
+      height: 250,
+      borderWidth: 2,
+      borderColor: '#ffffff',
+      borderRadius: 10,
+    },
+    scannerText: {
+      color: '#ffffff',
+      fontSize: 16,
+      marginTop: 20,
+      backgroundColor: 'rgba(0,0,0,0.5)',
+      paddingHorizontal: 15,
+      paddingVertical: 8,
+      borderRadius: 20,
+    },
+    itemContainer: {
+      flex: 1,
+      padding: 20,
+      justifyContent: 'center',
+    },
+    title: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      marginBottom: 30,
+    },
+    itemDetails: {
+      backgroundColor: '#ffffff',
+      borderRadius: 10,
+      padding: 20,
+      marginBottom: 30,
+      elevation: 3,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 3,
+    },
+    itemName: {
+      fontSize: 22,
+      fontWeight: 'bold',
+      marginBottom: 10,
+    },
+    itemBarcode: {
+      fontSize: 16,
+      color: '#666666',
+      marginBottom: 10,
+    },
+    itemDescription: {
+      fontSize: 16,
+      marginBottom: 10,
+    },
+    itemStock: {
+      fontSize: 16,
+      marginBottom: 5,
+    },
+    stockCount: {
+      fontWeight: 'bold',
+      color: '#2ecc71',
+    },
+    itemPrice: {
+      fontSize: 16,
+      fontWeight: '500',
+    },
+    buttonsContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginBottom: 20,
+    },
+    actionButton: {
+      flex: 1,
+      paddingVertical: 12,
+      borderRadius: 5,
+      alignItems: 'center',
+    },
+    stockInButton: {
+      backgroundColor: '#2ecc71',
+      marginRight: 10,
+    },
+    stockOutButton: {
+      backgroundColor: '#e74c3c',
+      marginLeft: 10,
+    },
+    editButton: {
+      backgroundColor: '#f39c12',
+      marginLeft: 10,
+    },
+    stockItemOutButton: {
+      backgroundColor: '#e74c3c',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 8,
+      borderRadius: 5,
+      marginTop: 12,
+    },
+    stockItemButtonText: {
+      color: '#ffffff',
+      fontSize: 14,
+      fontWeight: 'bold',
+      marginLeft: 6,
+    },
+    scanAgainButton: {
+      backgroundColor: '#3498db',
+      paddingVertical: 12,
+      borderRadius: 5,
+      alignItems: 'center',
+    },
+    buttonText: {
+      color: '#ffffff',
+      fontSize: 16,
+      fontWeight: 'bold',
+    },
+  });
+export const stockCardStyles = StyleSheet.create({
+    expiryContainer: {
+        marginVertical: 8,
+    },
+    expiryBadge: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: 6,
+        paddingHorizontal: 8,
+        borderRadius: 6,
+    },
+    daysLeftBadge: {
+        alignSelf: 'flex-start',
+        marginTop: 4,
+        paddingVertical: 3,
+        paddingHorizontal: 8,
+        borderRadius: 12,
+    },
+    daysLeftText: {
+        color: '#ffffff',
+        fontSize: 12,
+        fontWeight: 'bold',
+    }
+});
+
+export const stockoutFormStyles = StyleSheet.create({
+    container: {
+      backgroundColor: '#fff',
+      borderRadius: 8,
+      padding: 16,
+      marginVertical: 10,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 4,
+      elevation: 3,
+      borderWidth: 1,
+      borderColor: '#e1e8ed',
+    },
+    formHeader: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 16,
+      paddingBottom: 8,
+      borderBottomWidth: 1,
+      borderBottomColor: '#ecf0f1',
+    },
+    formTitle: {
+      fontSize: 16,
+      fontWeight: 'bold',
+      color: '#34495e',
+      marginLeft: 8,
+    },
+    formRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginBottom: 12,
+    },
+    label: {
+      fontSize: 14,
+      color: '#7f8c8d',
+      flex: 1,
+    },
+    value: {
+      fontSize: 14,
+      fontWeight: '500',
+      color: '#2c3e50',
+    },
+    input: {
+      borderWidth: 1,
+      borderColor: '#ddd',
+      borderRadius: 4,
+      paddingHorizontal: 12,
+      paddingVertical: 8,
+      width: 80,
+      fontSize: 14,
+      textAlign: 'center',
+    },
+    inputError: {
+      borderColor: '#e74c3c',
+      backgroundColor: 'rgba(231, 76, 60, 0.05)',
+    },
+    errorContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: 'rgba(231, 76, 60, 0.1)',
+      padding: 8,
+      borderRadius: 4,
+      marginBottom: 12,
+    },
+    errorText: {
+      color: '#e74c3c',
+      fontSize: 12,
+      marginLeft: 6,
+      flex: 1,
+    },
+    buttonContainer: {
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
+      marginTop: 8,
+    },
+    cancelButton: {
+      paddingVertical: 8,
+      paddingHorizontal: 12,
+      borderRadius: 4,
+      marginRight: 8,
+    },
+    cancelButtonText: {
+      color: '#7f8c8d',
+      fontSize: 14,
+    },
+    confirmButton: {
+      backgroundColor: '#e74c3c',
+      paddingVertical: 8,
+      paddingHorizontal: 16,
+      borderRadius: 4,
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    confirmButtonDisabled: {
+      backgroundColor: '#bdc3c7',
+    },
+    confirmButtonText: {
+      color: '#ffffff',
+      fontSize: 14,
+      fontWeight: '500',
+    },
+    buttonIcon: {
+      marginRight: 6,
+    },
+  });
+
+
+
+
+
+const localStyles = StyleSheet.create({
+    expiryContainer: {
+        marginVertical: 8,
+    },
+    expiryBadge: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: 6,
+        paddingHorizontal: 8,
+        borderRadius: 6,
+    },
+    daysLeftBadge: {
+        alignSelf: 'flex-start',
+        marginTop: 4,
+        paddingVertical: 3,
+        paddingHorizontal: 8,
+        borderRadius: 12,
+    },
+    daysLeftText: {
+        color: '#ffffff',
+        fontSize: 12,
+        fontWeight: 'bold',
+    }
+});
+
+export const stockOutFormStyles = StyleSheet.create({
+    container: {
+      backgroundColor: '#fff',
+      borderRadius: 8,
+      padding: 16,
+      marginVertical: 10,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 4,
+      elevation: 3,
+      borderWidth: 1,
+      borderColor: '#e1e8ed',
+    },
+    formHeader: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 16,
+      paddingBottom: 8,
+      borderBottomWidth: 1,
+      borderBottomColor: '#ecf0f1',
+    },
+    formTitle: {
+      fontSize: 16,
+      fontWeight: 'bold',
+      color: '#34495e',
+      marginLeft: 8,
+    },
+    formRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginBottom: 12,
+    },
+    label: {
+      fontSize: 14,
+      color: '#7f8c8d',
+      flex: 1,
+    },
+    value: {
+      fontSize: 14,
+      fontWeight: '500',
+      color: '#2c3e50',
+    },
+    input: {
+      borderWidth: 1,
+      borderColor: '#ddd',
+      borderRadius: 4,
+      paddingHorizontal: 12,
+      paddingVertical: 8,
+      width: 80,
+      fontSize: 14,
+      textAlign: 'center',
+    },
+    inputError: {
+      borderColor: '#e74c3c',
+      backgroundColor: 'rgba(231, 76, 60, 0.05)',
+    },
+    errorContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: 'rgba(231, 76, 60, 0.1)',
+      padding: 8,
+      borderRadius: 4,
+      marginBottom: 12,
+    },
+    errorText: {
+      color: '#e74c3c',
+      fontSize: 12,
+      marginLeft: 6,
+      flex: 1,
+    },
+    buttonContainer: {
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
+      marginTop: 8,
+    },
+    cancelButton: {
+      paddingVertical: 8,
+      paddingHorizontal: 12,
+      borderRadius: 4,
+      marginRight: 8,
+    },
+    cancelButtonText: {
+      color: '#7f8c8d',
+      fontSize: 14,
+    },
+    confirmButton: {
+      backgroundColor: '#e74c3c',
+      paddingVertical: 8,
+      paddingHorizontal: 16,
+      borderRadius: 4,
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    confirmButtonDisabled: {
+      backgroundColor: '#bdc3c7',
+    },
+    confirmButtonText: {
+      color: '#ffffff',
+      fontSize: 14,
+      fontWeight: '500',
+    },
+    buttonIcon: {
+      marginRight: 6,
+    },
+  });
+  
