@@ -41,7 +41,6 @@ export const useExpiryStockByRange = (
                     endDate: res.payload.endDate,
                     total: res.payload.total || 0,
                 }));
-                console.log("@@@res.payload.products", res.payload);
                 const stocksWithPictures: StockWithPicture[] = [];
                 for (const product of res.payload.products) {
                     for (const stock of product.stock) {
