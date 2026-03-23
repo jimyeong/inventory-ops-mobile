@@ -27,8 +27,8 @@ The app starts with a simple sign-in flow designed for quick access in day-to-da
 
 <p>
 
-  <img src="./docs/splash1.jpg" width="32%" />
-  <img src="./docs/signin-screen.png" width="32%" />
+  <img src="./docs/splash1.jpg" height="250px" />
+  <img src="./docs/signin-screen.png" height="250px" />
 </p>
 
 ### 2. Home and Product Search
@@ -36,8 +36,8 @@ The home screen surfaces urgent expiry items and expired-product visibility imme
 
 It also supports quick product lookup for fast in-store handling.
 <p>
-  <img src="./docs/home-screen.jpg" width="32%" />
-  <img src="./docs/search-results.jpg" width="32%" />
+  <img src="./docs/home-screen.jpg" height="250px" />
+  <img src="./docs/search-results.jpg" height="250px" />
 </p>
 
 ### 3. Product Details
