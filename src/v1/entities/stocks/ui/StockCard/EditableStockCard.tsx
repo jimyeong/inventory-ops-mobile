@@ -94,7 +94,7 @@ const EditableStockCard = ({ stock, index, onHandleStockUpdate, onInit }: Editab
                             <StockDisplay stock={stock} iconName="inventory-2" iconColor={colors.pink.main} label="BOX" value={stockValue.toString() || '0'} />
                         )}
                         {stock.stock_type.toUpperCase() === 'PCS' && (
-                            <StockDisplay stock={stock} iconName="inventory-3" iconColor={colors.purple.dark} label="PCS" value={stockValue.toString() || '0'} />
+                            <StockDisplay stock={stock} iconName="inventory-2" iconColor={colors.purple.dark} label="PCS" value={stockValue.toString() || '0'} />
                         )}
                         <View style={{ flexDirection: 'row', gap: 10, display: 'flex', justifyContent: 'center', }}>
                             <BasicIconButton icon="arrow-drop-down" onPress={() => setStockValue((prev)=> prev - 1 >= 0 ? prev - 1 : 0)} size={40} color={colors.text.primary} rotation={0} />
