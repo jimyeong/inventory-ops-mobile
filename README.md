@@ -1,98 +1,153 @@
 # Owlverload - Expiry Tracking for Retail Operations
 
-A React Native mobile app built to improve inventory visibility, expiry tracking, and day-to-day stock handling in a real retail environment.
+A React Native mobile app designed to improve inventory visibility, expiry tracking, and day-to-day stock handling in a real retail environment.
 
 ## Overview
 
-This project started from a practical problem: expiry-related stock handling in a store environment was repetitive, easy to miss, and too dependent on manual checking.
+Owlverload started from a practical store problem: expiry-related stock handling was repetitive, easy to miss, and too dependent on manual checking.
 
-Instead of treating it as a generic inventory demo, I built the app around workflows that actually happen in day-to-day retail operations:
+Rather than building a generic inventory demo, I designed the app around workflows that actually happen during day-to-day retail operations, such as:
 
-- searching products quickly
+- searching for products quickly
 - checking stock information
-- registering expiry-related stock
+- creating and updating stock entries
+- handling near-expiry and expired items
 - updating product details
-- handling discounted or expired items
-- reducing unnecessary taps for frequent actions
+- reducing unnecessary taps for frequent operational tasks
 
-As I used the app during real work, I kept adjusting the UI and navigation based on what felt slow, awkward, or operationally inefficient.
+After building the first version, I used it in practice and kept refining the app based on what felt slow, awkward, or inefficient in real work.
 
-## What changed after real usage
+This refactoring phase focused heavily on improving UI/UX, reducing unnecessary screen transitions, and making repeated stock-handling tasks more intuitive.
 
-The first version worked, but after using it in practice, several friction points became obvious.
+## v1 Refactoring Focus
 
-I updated the app to better reflect how the work is actually done:
+The main goal of this iteration was to reduce operational friction.
 
-- simplified the screen flow to reduce unnecessary movement between screens
-- reorganized frequent actions around bottom navigation
-- reduced process length for common stock-handling tasks
-- improved inventory deletion flow so items do not always need to be managed from the detail page
-- added swipe-based interactions to support faster stock handling
-- made it possible to remove multiple stock entries more efficiently during operational work
+I paid close attention to questions such as:
 
-These changes came from direct usage feedback rather than purely visual redesign.
+- how many taps are needed to reach an important action?
+- does the user have to move through too many screens for a simple task?
+- can frequent actions be completed more directly?
+- can expiry-related decisions be handled more clearly and consistently?
 
-## Expiry workflow improvements
+The result was a set of workflow and interface improvements aimed at making the app faster and more practical for real store use.
 
-One of the main improvements was separating expiry-related outcomes more realistically.
+## Key Improvements
 
-In practice, near-expiry stock does not always end the same way:
+### 1. Better navigation after stock creation and update
 
-- some items expire and are discarded
-- some items are moved into an expiry list, discounted, and eventually sold
-- some discount strategies reduce loss and recover part of the value
+After completing stock creation or stock update, users often needed to move to another relevant screen immediately.
 
-To reflect that, I expanded the expiry handling flow so that items can be categorized more clearly, including whether they were:
+To make that transition easier, I added bottom navigation to the resulting screens so users could move more comfortably without unnecessary backtracking.
 
-- sold after discount
-- fully expired / wasted
+This was intended to make the flow smoother after task completion and reduce extra movement across the app.
 
-This makes the data more useful beyond simple stock tracking.
+### 2. Direct stock actions from the Stocks screen
 
-## Reporting direction
+Previously, deleting or updating stock required users to go one step deeper into a Stock Detail screen.
 
-Based on that workflow change, I started shaping the data model toward reporting as well.
+That felt too heavy for actions that are frequent and operationally simple.
 
-The goal is not only to list expired items, but to support questions like:
+To reduce those steps, I changed the flow so stock can be handled directly from the Stocks screen:
 
-- how much stock was actually lost?
-- how much value was recovered through discounting?
-- which items repeatedly fail to sell even after discounting?
-- how much was saved by intervening before full expiry?
+- added swipe interactions for stock actions
+- introduced state-based UI changes to support in-place interaction
+- reduced dependency on the Stock Detail page for common tasks
 
-The report/dashboard view is being split into a separate project, but it came directly from this stock-management workflow.
+This made stock updates and deletions faster and more direct.
 
-Example reporting direction includes:
+### 3. More efficient multi-stock deletion
 
-- expired vs sold-after-discount tracking
-- rescued value through discounted sales
-- product-level loss analysis
-- near-expiry rescue reporting
+I added an external delete action on the Stocks screen so users can remove multiple stock entries more efficiently.
+
+This was designed for repetitive operational cleanup, where handling items one by one would be unnecessarily slow.
+
+### 4. Urgent expiry section on the main screen
+
+I added a dedicated section on the main page for urgent items, meaning products with roughly one week remaining before expiry.
+
+This improves visibility for high-priority stock and helps staff notice time-sensitive items earlier without needing to manually search for them.
+
+### 5. Separate tracking flow for expired products
+
+One important problem in the earlier version was that once a product had already expired, it could disappear from the normal working flow.
+
+If a staff member forgot to handle it on the exact day it expired, the item might no longer appear in the filtered list, which created a real operational risk: expired stock could remain on the shelf simply because it was no longer visible in the app.
+
+To address this, I created a separate expired-products tracking section so expired items can still be reviewed and managed after they pass the expiry date.
+
+This allows post-expiry handling such as:
+
+- labeling
+- assessment
+- follow-up processing
+- operational cleanup
+
+## Expired Product Management Flow
+
+I also extended the expired-products flow so staff can manage the outcome more explicitly.
+
+On the expired-products page, users can swipe an item and decide what happened to it operationally.
+
+For example:
+
+- whether the item entered a discount-handling process
+- whether it was eventually sold after discounting
+- whether it ended up fully expired and wasted
+
+This reflects the reality that near-expiry products do not always end in the same outcome.
+
+Some items can still be rescued through tighter handling, such as starting discounts for products that are already within a one-month risk window.
+
+By separating those outcomes more clearly, the app can produce more meaningful operational data instead of treating everything as a simple expired/not-expired case.
+
+## Reporting Direction
+
+A major reason for adding this classification flow was to support better reporting.
+
+The goal is not only to list expired stock, but to quantify parts of store operation that are often judged only by intuition.
+
+Examples include:
+
+- how much value was saved through discount handling
+- how much stock ended as loss
+- which items were rescued before full expiry
+- which products repeatedly fail to sell even after discounting
+
+This reporting layer will be developed as a separate project, but it comes directly from the stock-management workflow and the operational data structure designed here.
+
+The overall direction is to turn vague operational judgment into measurable outcomes wherever possible.
 
 ## Core Features
 
 - Product and inventory lookup
 - Product detail updates
+- Stock creation and stock updates
 - Expiry-date stock tracking
+- Urgent near-expiry item visibility
+- Separate expired-item tracking flow
 - Swipe-based stock actions
 - Faster stock deletion workflow
-- Operationally simplified navigation
-- Mobile-first retail workflow support
+- Multi-item operational cleanup support
+- Bottom-navigation-based movement after stock actions
+- Mobile-first workflow support for retail operations
 - Image upload support for product management
 
-## Example operational improvements
+## Design Approach
 
-### Before
-Some actions required going deeper into the detail screen even when the task was repetitive and operationally simple.
+This project was shaped by actual usage, not just initial planning.
 
-### After
-The flow was adjusted so that common actions could be completed faster, with less screen movement and less dependency on the detail page.
+The first version established the basic inventory and expiry workflow.  
+This refactored version focused much more on:
 
-This included:
-- more direct access through navigation restructuring
-- swipe interaction for stock handling
-- support for batch-like operational cleanup
-- clearer expiry result classification
+- reducing taps
+- simplifying screen flow
+- making repeated actions faster
+- improving action visibility
+- making stock handling more intuitive
+- supporting more realistic expiry outcomes
+
+In short, this iteration focused less on adding surface-level features and more on making the workflow operationally efficient.
 
 ## Tech Stack
 
@@ -114,7 +169,7 @@ This included:
 
 ## Project Structure
 
-```text
+```bash
 .
 ├── android/
 ├── ios/
@@ -122,12 +177,3 @@ This included:
 ├── package.json
 ├── tsconfig.json
 └── README.md
-
-```
-
-
-Screens / UI
-This repository focuses on the mobile stock-management application.
-The reporting dashboard direction shown in the mockup is based on the operational data produced by this workflow, but it will be split into a separate project.
-
-
