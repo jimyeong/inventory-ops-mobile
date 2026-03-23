@@ -53,7 +53,6 @@ const retryWithJitter = async (
 };
 // API configuration
 // fallback은 optional
-console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', Config);
 const API_URL = Config.API_URL || 'http://192.168.0.18:8080';
 export const imgServer = Config.IMAGE_SERVER_URL || 'https://www.plainknot.com';
 
@@ -141,7 +140,6 @@ export const addAuthErrorHandling = (axiosInstance: any, retryConfig: RetryConfi
   // Response interceptor with auth error handling and retry logic
   axiosInstance.interceptors.response.use(
     (response: any) => {
-      console.log("@@@response", response);
       return response;
     },
     async (error: AxiosError) => {

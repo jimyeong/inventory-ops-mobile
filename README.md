@@ -77,3 +77,11 @@ A separate expired-products flow was added so items do not disappear from the op
 This supports follow-up actions such as assessment, discount outcome tracking, and final loss handling.
 
 ![Expired products tab](./docs/expired-tab.png)
+
+
+## Related project
+
+This repository focuses on operational workflows in the mobile app.
+
+For the reporting and dashboard side, see the separate project:
+[inventory-ops-report](https://github.com/jimyeong/inventory-ops-report)
