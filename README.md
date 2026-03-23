@@ -1,3 +1,18 @@
+
+## Why I built this
+
+I built Owlverload because expiry-related stock handling in retail is often repetitive, manual, and easy to overlook.
+
+In day-to-day store operations, staff have to keep track of products that are approaching expiry, decide when to apply discounts, remove expired items at the right time, and make sure nothing is missed on the shop floor. In practice, a lot of this work depends on memory, routine checks, and individual judgment.
+
+That creates obvious operational risk. If expiry handling is missed or delayed, products can remain on shelves too long, follow-up actions may not happen consistently, and losses are harder to understand clearly afterward.
+
+I wanted to build something that made this workflow more visible, more structured, and less dependent on manual attention alone.
+
+This project was my attempt to turn a messy operational problem into a clearer system: one that helps staff act earlier, manage stock more directly, and capture better data around expiry outcomes.
+
+
+
 ## Early Wireframe Exploration
 
 Before refining the implemented screens, I mapped the workflow in low-fidelity wireframes to think through screen transitions, stock-handling steps, and expiry-related flows.
@@ -12,8 +27,6 @@ The app starts with a simple sign-in flow designed for quick access in day-to-da
 <p>
   <img src="./docs/signin-screen.png" width="32%" />
 </p>
-
-## Why I built this
 
 ### 2. Home and Product Search
 The home screen surfaces urgent expiry items and expired-product visibility immediately, reducing the chance that high-risk stock is missed during daily operations.
