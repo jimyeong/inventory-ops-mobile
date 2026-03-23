@@ -24,7 +24,10 @@ Before refining the implemented screens, I mapped the workflow in low-fidelity w
 ### 1. Entry and Sign-in
 The app starts with a simple sign-in flow designed for quick access in day-to-day store operations.
 
+
 <p>
+
+  <img src="./docs/splash1.jpg" width="32%" />
   <img src="./docs/signin-screen.png" width="32%" />
 </p>
 
