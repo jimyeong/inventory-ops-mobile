@@ -13,6 +13,7 @@ The app starts with a simple sign-in flow designed for quick access in day-to-da
   <img src="./docs/signin-screen.png" width="32%" />
 </p>
 
+## Why I built this
 
 ### 2. Home and Product Search
 The home screen surfaces urgent expiry items and expired-product visibility immediately, reducing the chance that high-risk stock is missed during daily operations.
@@ -35,6 +36,7 @@ Stock can be registered with quantity, expiry date, location, and optional disco
   <img src="./docs/add-stock.jpg" width="32%" />
 </p>
 
+Working close to day-to-day retail processes made it clear that stock handling, expiry management, and product updates are often repetitive, error-prone, and dependent on manual checks. This app was built as a step toward making those workflows more visible, trackable, and manageable on mobile.
 
 ### 5. Stock Management Improvements
 One of the main UI/UX improvements in this version was reducing the need to move into a separate stock detail step for common actions.
