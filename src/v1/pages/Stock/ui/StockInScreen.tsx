@@ -5,6 +5,9 @@ import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navig
 import ProductInfoPanel from '../../../entities/products/ui/Panels/ProductInfoPanel';
 import { useAuth } from '../../../../context/AuthContext';
 import StockInFormWidget from '../../../widgets/stocks/ui/StockInFormWidget';
+import { TOAST_MESSAGE } from '../../../constant';
+import { TOAST_TYPE } from '../../../constant';
+import Toast from 'react-native-toast-message';
 
 const StockInScreen = () => {
     const { product } = useRoute<RouteProp<ROOT_PARAM_LIST, 'StockIn'>>().params;
@@ -14,6 +17,7 @@ const StockInScreen = () => {
 
     const handleStockInResult = async (result: { success: boolean }) => {
         if (result.success) {
+            
             navigation.navigate('ProductDetail', {
                 product_id: product.product_id, 
                 product: product,
@@ -22,14 +26,15 @@ const StockInScreen = () => {
                 is_updated: true,
                 event_type: "STOCK_UPDATE"
             });
+            // delete StockIn screen queue in navigation
+            // navigation.reset({
+            //     index: 0,
+            //     routes: [{ name: 'ProductDetail' }],
+            // });
         } else {
-            navigation.navigate('ProductDetail', {
-                product_id: product.product_id, 
-                product: product,
-                prev_screen: 'StockIn',
-                message: "Failed to add stock!❌",
-                is_updated: false,
-                event_type: "STOCK_UPDATE"
+            Toast.show({
+                text1: TOAST_MESSAGE.STOCK_ADDED_FAILED,
+                type: TOAST_TYPE.ERROR,
             });
         }
 

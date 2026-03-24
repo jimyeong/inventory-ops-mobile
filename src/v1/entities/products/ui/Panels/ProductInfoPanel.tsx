@@ -7,9 +7,8 @@ import { imgServer } from '../../../../../services/ApiService';
 const ProductInfoPanel = ({ product }: { product: Product }) => {
     const totalStock = product.stock?.reduce((sum, stock) => {
         const box = parseInt(stock.box_number) || 0;
-        const bundle = parseInt(stock.bundle_number) || 0;
         const pcs = parseInt(stock.pcs_number) || 0;
-        return sum + box + bundle + pcs;
+        return sum + box + pcs;
     }, 0) || 0;
 
     return (
@@ -40,7 +39,7 @@ const ProductInfoPanel = ({ product }: { product: Product }) => {
                 <View style={styles.infoRow}>
                     <Icon name="tag" size={16} color="#666" />
                     <Text style={styles.infoLabel}>Product ID:</Text>
-                    <Text style={styles.infoValue}>{product.id}</Text>
+                    <Text style={styles.infoValue}>{product.product_id || 'N/A'}</Text>
                 </View>
 
                 <View style={styles.infoRow}>

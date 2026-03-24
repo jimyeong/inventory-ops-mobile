@@ -50,9 +50,14 @@ const ProductDetailScreen = () => {
             const response = await getProductDetail(product.product_id);
             // get Item
             if (response.success && response.payload) {
-                const cur_product = response.payload.products[product_id];
-                if (cur_product) {
-                    setProduct({ ...cur_product, product_id: response.payload.product_id });
+                const _product = response.payload.products[product.product_id];
+                const _stock = _product.stock || [];
+                if (_product) {
+                    setProduct({
+                        ..._product,
+                        product_id: _product.product_id, 
+                        stock: [..._stock]
+                    });
                     Toast.show({
                         text1: TOAST_MESSAGE.PRODUCT_REFRESHED_SUCCESSFULLY,
                         type: TOAST_TYPE.SUCCESS,
@@ -60,7 +65,7 @@ const ProductDetailScreen = () => {
                         bottomOffset: 100,
                         position: 'bottom',
                     });
-                }else{
+                } else {
                     Toast.show({
                         text1: TOAST_MESSAGE.PRODUCT_NOT_FOUND,
                         type: TOAST_TYPE.ERROR,
@@ -91,7 +96,6 @@ const ProductDetailScreen = () => {
             </SafeAreaView>
         );
     }
-    product.stock = productStock?.stocks || [];
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView

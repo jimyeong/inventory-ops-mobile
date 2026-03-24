@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import StockInputText from '../../../pages/Stock/ui/InputGroups/StockInputText';
 import StockInputTextArea from '../../../pages/Stock/ui/InputGroups/StockInputTextArea';
@@ -14,8 +14,8 @@ import Toast from 'react-native-toast-message';
 import { StockInRequestParams, StockInResponseParams } from '../../../features/stocks/models/types';
 import { stockCreateApi } from '../../../features/stocks/api/stocksApi';
 import { ServiceResponse } from '../../../../services/ApiService';
-import { DISCOUNT_RATES } from '../../../constant';
-
+import { DISCOUNT_RATES, TOAST_TYPE } from '../../../constant';
+import { TOAST_MESSAGE } from '../../../constant';
 const STOCK_TYPES: Array<"BOX" | "PCS"> = ["BOX", "PCS"];
 
 interface StockInFormProps {
@@ -33,6 +33,9 @@ const StockInFormWidget = ({ product, userData, handleStockInResult }: StockInFo
     const [notes, setNotes] = useState('');
     const [discountRate, setDiscountRate] = useState<number>(0);
     const [isLoading, setIsLoading] = useState(false);
+    const idempotencyKey = useRef<string | null>(null);
+
+
     const handleDateChange = (_event: any, selectedDate?: Date) => {
         setShowDatePicker(Platform.OS === 'ios');
         if (selectedDate) {
@@ -60,6 +63,14 @@ const StockInFormWidget = ({ product, userData, handleStockInResult }: StockInFo
     };
     const handleSubmit = async () => {
         
+        if (!idempotencyKey.current) {
+            console.log('idempotencyKey.current is null');
+            idempotencyKey.current = `${Date.now()}-${Math.random().toString(36).slice(2)}`
+            console.log('idempotencyKey.current is set', idempotencyKey);
+            
+        }
+        const idempotency_key = idempotencyKey.current;
+        console.log('idempotency_key', idempotency_key);
         //TODO: ADD Idempotency key
         if (!validateForm()) {
             return;
@@ -75,14 +86,27 @@ const StockInFormWidget = ({ product, userData, handleStockInResult }: StockInFo
             notes: notes,
             discount_rate: discountRate,
         };
+        try {
 
-        const response = await stockCreateApi.stockIn(stockData);
-        setIsLoading(false);
-        if (response.success) {
-            handleStockInResult({ success: true });
-        } else {
-            handleStockInResult({ success: false });
+            const response = await stockCreateApi.stockIn(stockData, idempotency_key);
+            setIsLoading(false);
+            if (response.success) {
+                handleStockInResult({ success: true });
+                idempotencyKey.current = null;
+            } else {
+                Toast.show({
+                    text1: TOAST_MESSAGE.STOCK_ADDED_FAILED,
+                    type: TOAST_TYPE.ERROR,
+                });
+            }
+        } catch (err) {
+            console.log('Error performing stock in:', err);
+            Toast.show({
+                text1: TOAST_MESSAGE.STOCK_ADDED_FAILED,
+                type: TOAST_TYPE.ERROR,
+            });
         }
+
     };
     return (
         <View style={styles.formContainer}>
