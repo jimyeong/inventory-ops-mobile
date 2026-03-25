@@ -73,6 +73,7 @@ This helps distinguish items that are approaching expiry from those that require
   <img src="./docs/expiry-1-2-weeks.jpg" width="32%" />
   <img src="./docs/expiry-0-7-days.jpg" width="32%" />
 </p>
+
 ### 7. Expired Product Follow-up
 
 A separate expired-products flow was added so items do not disappear from the operational workflow once they pass the expiry date.
