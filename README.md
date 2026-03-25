@@ -64,6 +64,7 @@ Users can now manage stock more directly from the stock list through swipe-based
   <img src="./docs/stock-update.jpg" width="32%" />
 </p>
 This change was intended to reduce taps, shorten repetitive workflows, and make operational stock handling more intuitive.
+
 ### 6. Expiry Tracking
 
 The expiry tracking screen groups stock by time-to-expiry so staff can prioritise action more clearly.
