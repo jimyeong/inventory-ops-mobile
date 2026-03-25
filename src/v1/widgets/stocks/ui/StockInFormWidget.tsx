@@ -64,13 +64,9 @@ const StockInFormWidget = ({ product, userData, handleStockInResult }: StockInFo
     const handleSubmit = async () => {
         
         if (!idempotencyKey.current) {
-            console.log('idempotencyKey.current is null');
             idempotencyKey.current = `${Date.now()}-${Math.random().toString(36).slice(2)}`
-            console.log('idempotencyKey.current is set', idempotencyKey);
-            
         }
         const idempotency_key = idempotencyKey.current;
-        console.log('idempotency_key', idempotency_key);
         //TODO: ADD Idempotency key
         if (!validateForm()) {
             return;
@@ -100,7 +96,6 @@ const StockInFormWidget = ({ product, userData, handleStockInResult }: StockInFo
                 });
             }
         } catch (err) {
-            console.log('Error performing stock in:', err);
             Toast.show({
                 text1: TOAST_MESSAGE.STOCK_ADDED_FAILED,
                 type: TOAST_TYPE.ERROR,

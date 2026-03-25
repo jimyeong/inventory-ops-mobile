@@ -11,7 +11,6 @@ export const stockCreateApi = {
                     'Idempotency-Key': idempotency_key,
                 },
             });            
-            console.log('response', response.data);
             return response.data;
         } catch (error) {
             console.error('Error performing stock in:', error);
