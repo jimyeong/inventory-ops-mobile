@@ -86,7 +86,9 @@ const StockInFormWidget = ({ product, userData, handleStockInResult }: StockInFo
 
             const response = await stockCreateApi.stockIn(stockData, idempotency_key);
             setIsLoading(false);
+            console.log('response success????', response);
             if (response.success) {
+                
                 handleStockInResult({ success: true });
                 idempotencyKey.current = null;
             } else {
