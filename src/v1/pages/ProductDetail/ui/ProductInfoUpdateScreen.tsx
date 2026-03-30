@@ -64,6 +64,13 @@ const ProductInfoUpdateScreen = () => {
         setPriceError(isPriceEmpty);
         setBoxPriceError(isBoxPriceEmpty);
         if (isPriceEmpty || isBoxPriceEmpty) return;
+        if(parseFloat(price) <= 0 || parseFloat(boxPrice) <= 0) {
+            Toast.show({
+                type: TOAST_TYPE.ERROR,
+                text1: 'Price and box price cannot be 0 ❌',
+            });
+            return;
+        }
 
         setIsSaving(true);
         try {

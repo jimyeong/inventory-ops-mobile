@@ -94,31 +94,6 @@ export default function HomeScreen() {
         };
     }, []);
 
-    const oldRefreshToken = async () => {
-        const token = await AuthService.getRefreshToken();
-        console.log('old refresh token:', token);
-    }
-
-    const refreshedIdToken = async () => {
-        const token = await AuthService.refreshToken();
-        console.log('refreshed firebase id token:', token);
-    }
-
-    const newRefreshToken = async () => {
-        const token = await AuthService.getRefreshToken();
-        console.log('new refresh token:', token);
-    }
-
-
-    // then immediately call protected api
-    const req = async () => {
-        // startDate: 2026-03-15
-        // endDate: 2026-03-31
-        const res = await apiClient.get('/api/v1/products/expiring-stocks?startDate=2026-03-15&endDate=2026-03-31');
-        console.log('protected api after refresh:', res);
-    }
-
-
     const handleRefresh = async () => {
         setRefreshing(true);
         try {

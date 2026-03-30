@@ -5,7 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "android:local": "ENVFILE=.env.local react-native run-android",
-    "android:staging": "ENVFILE=.env.staging react-native run-android --variant=staging",
+    "android:staging": "ENVFILE=.env.staging react-native run-android",
     "android:prod": "ENVFILE=.env.production react-native run-android",
     "ios:dev": "ENVFILE=.env.development react-native run-ios",
     "ios:staging": "ENVFILE=.env.staging react-native run-ios",
@@ -18,7 +18,8 @@
     "apkgen": "cd android && ./gradlew clean && ./gradlew assembleRelease",
     "setapk": "adb install android/app/build/outputs/apk/release/app-release.apk",
     "initapk": "npm run apkgen && npm run setapk",
-    "build": "npx react-native build-android --mode=release"
+    "build": "npx react-native build-android --mode=release",
+    "clean": "cd android && ./gradlew clean"
   },
   "dependencies": {
     "@bam.tech/react-native-image-resizer": "^3.0.11",

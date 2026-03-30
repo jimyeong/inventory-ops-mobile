@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Product } from '../../../../entities/products/models/types';
 import { imgServer } from '../../../../../services/ApiService';
 import { StockWithPicture } from '../../../../features/expiry-stock/model/types';
-
+import { useNavigation } from '@react-navigation/native';
+import { ROOT_PARAM_LIST } from '../../../../../models/navigation';
 function getDaysPastExpiry(expiryDate: Date): number {
     return Math.floor((Date.now() - new Date(expiryDate).getTime()) / (1000 * 60 * 60 * 24));
 }
@@ -12,15 +13,22 @@ function getDaysPastExpiry(expiryDate: Date): number {
 interface AlreadyExpiredStockCardProps {
     currentStock: StockWithPicture;
     onPress?: (product: Product) => void;
+    onUpdate?: (stock: StockWithPicture) => void;
 }
 
-const AlreadyExpiredStockCard = ({ currentStock, onPress }: AlreadyExpiredStockCardProps) => {
+const AlreadyExpiredStockCard = ({ currentStock, onPress, onUpdate }: AlreadyExpiredStockCardProps) => {
     const daysPast = getDaysPastExpiry(currentStock.expiry_date);
     const hasDiscount = currentStock.discount_rate > 0;
     const discountedPrice = (currentStock.price ?? 0) * (1 - currentStock.discount_rate / 100);
+    const handleUpdate = useCallback(() => {
+        onUpdate?.(currentStock);
+    }, [currentStock, onUpdate]);
 
     return (
-        <TouchableOpacity style={styles.card} onPress={() => {}} activeOpacity={0.75}>
+        <TouchableOpacity style={styles.card} activeOpacity={0.75}>
+            <TouchableOpacity style={styles.updateButton} onPress={handleUpdate}>
+                <Icon name="edit" size={20} color="#2980b9" />
+            </TouchableOpacity>
             {/* Left: Image */}
             <View style={styles.imageContainer}>
                 {currentStock.image_path ? (
@@ -100,6 +108,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.08,
         shadowRadius: 6,
         elevation: 3,
+        position: 'relative',
     },
     imageContainer: {
         width: 90,
@@ -188,5 +197,13 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         color: '#fff',
         letterSpacing: 0.2,
+    },
+    updateButton: {
+        position: 'absolute',
+        top: 10,
+        right: 10,
+        padding: 10,
+        backgroundColor: '#e8f4fd',
+        borderRadius: 8,
     },
 });

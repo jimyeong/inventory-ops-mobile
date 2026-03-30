@@ -21,6 +21,7 @@ import ExpiryStockScreen from '../v1/pages/Stock/ui/ExpiryStockScreen';
 import AuthService from '../services/AuthService';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import auth from '@react-native-firebase/auth';
+import ProductInfoUpdateScreen from '../v1/pages/ProductDetail/ui/ProductInfoUpdateScreen';
 const Stack = createNativeStackNavigator<ROOT_PARAM_LIST>();
 SplashScreen
 const AuthenticatedStack = () => {
@@ -51,21 +52,7 @@ const AuthenticatedStack = () => {
         component={EditItemScreen}
         options={{ title: 'Edit Item' }}
       /> */}
-      <Stack.Screen
-        name="ScannedItemDetail"
-        component={ItemStockDetailScreen}
-        options={{ title: 'Stock Management' }}
-      />
-      <Stack.Screen
-        name="ItemDetailEdit"
-        component={ItemDetailEditScreen}
-        options={{ title: 'Product Information' }}
-      />
-      <Stack.Screen
-        name="FillOutItemInfo"
-        component={FillOutItemInfo}
-        options={{ title: 'Fill Out Item Info' }}
-      />
+
       {/* <Stack.Screen
         name="StockIn"
         component={StockInScreen}
@@ -75,6 +62,21 @@ const AuthenticatedStack = () => {
         name="BarcodeMining"
         component={BarcodeMiningScreen}
         options={{ title: 'Barcode Mining' }}
+      /> */}
+      {/* <Stack.Screen
+        name="ScannedItemDetail"
+        component={ItemStockDetailScreen}
+        options={{ title: 'Stock Management' }}
+      /> */}
+      {/* <Stack.Screen
+        name="ItemDetailEdit"
+        component={ItemDetailEditScreen}
+        options={{ title: 'Product Information' }}
+      /> */}
+      {/* <Stack.Screen
+        name="FillOutItemInfo"
+        component={FillOutItemInfo}
+        options={{ title: 'Fill Out Item Info' }}
       /> */}
       <Stack.Screen
         name="ExpiringItems"
@@ -94,6 +96,11 @@ const AuthenticatedStack = () => {
       <Stack.Screen
         name="ExpiryStock"
         component={ExpiryStockScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ProductInfoUpdate"
+        component={ProductInfoUpdateScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

@@ -22,7 +22,7 @@ export const useExpiredProductsData = (olderThanDays: number = 1, refreshTrigger
                 const response = await getItemsWithExpiredStocks(olderThanDays);
                 if (response.success) {
                     setExpiredProductsDataState({
-                        productsWithExpiredStocks: response.payload.products_with_expired_stocks,
+                        productsWithExpiredStocks: response.payload.products_with_expired_stocks.sort((a,b)=>a.product.product_id.localeCompare(b.product.product_id)),
                         total: response.payload.products_with_expired_stocks?.length || 0,
                         olderThanDays: olderThanDays,
                         message: response.message ?? '',
