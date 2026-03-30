@@ -2,14 +2,14 @@ import React from 'react';
 import { View, Text, ViewStyle, ScrollView, RefreshControl } from 'react-native';
 import SearchResultView from './SearchResultView';
 import HomeProductsView from './HomeProductsView';
-import { SearchResultItem } from '../model/type';
+import { SearchResultProduct } from '../model/type';
 import ExpiredProductsWidget from "../../../../widgets/expiryProducts/ui/ExpiredProductsWidget";
 import UrgentProductsWidget from "../../../../widgets/expiryProducts/ui/UrgentProductsWidget";
 import { Product } from '../../../../entities/products/models/types';
 
 interface HomeProductsPanelProps {
     isSearching: boolean;
-    searchedList: SearchResultItem[];
+    searchedList: SearchResultProduct[];
     style: ViewStyle;
     refreshing?: boolean;
     onRefresh?: () => void;

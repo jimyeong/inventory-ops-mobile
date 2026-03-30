@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { View, StyleSheet, FlatList, ScrollView, RefreshControl } from 'react-native';
 import { Product } from '../../../../entities/products/models/types';
 import ProductLoadingIndicator from '../../../../entities/products/ui/Loading/ProductLoadingIndicator';
@@ -16,6 +16,9 @@ import LeftSwipeableContainer from '../../../../shared/ui/SwipeableContainer/Lef
 import { layout } from '../../../../shared/theme/token';
 import renderExpiredStockLeftAction from '../ExpirySwipeableContainer/renderExpiredStockLeftAction';
 import { DeleteStockRequestPayload } from '../../../../features/expiry-stock/api/expiryStockApi';
+import { useNavigation } from '@react-navigation/native';
+import { NavigationProp } from '@react-navigation/native';
+import { ROOT_PARAM_LIST } from '../../../../../models/navigation';
 
 const renderLeftActions = (progress: SharedValue<number>, translation: SharedValue<number>, swipeableMethods: SwipeableMethods) => {
     return <ActionContent progress={progress} onPress={() => { }} actionText="Delete" iconLabel="delete" buttonStyle={styles.button} />;
@@ -63,6 +66,34 @@ export default function ExpiryDisplayPanel({
 }: ExpiryDisplayPanelProps) {
     const rc = refreshControl(onRefresh, refreshing);
     const swipeableRef = useRef<SwipeableMethods>(null);
+    const navigation = useNavigation<NavigationProp<ROOT_PARAM_LIST>>();
+    const handleUpdate = useCallback((stock: StockWithPicture) => {
+        navigation.navigate('ProductInfoUpdate', {
+            product_info: {
+                image_path: stock.image_path || '',
+                product_id: stock.product_id || '',
+                name: stock.name || '',
+                name_kor: stock.name_kor || '',
+                name_eng: stock.name_eng || '',
+                name_chi: stock.name_chi || '',
+                name_jap: stock.name_jap || '',
+                code: stock.code || '',
+                price: stock.price || 0,
+                box_price: stock.box_price || undefined,
+                barcode: '',
+                barcode_for_box: '',
+                box_barcode: '',
+                type: '',
+                ingredients: '',
+                has_beef: false,
+                has_pork: false,
+                is_halal: false,
+                reasoning: '',
+            },
+            prev_screen: 'ExpiryDisplayPanel',
+            event_type: 'UPDATE_PRODUCT_INFO_CLICKED',
+        });
+    }, [navigation]);
     if (selectedChipId === "-1") {
         if (expiredProductLoading && expiredProducts.length === 0) {
             return (
@@ -100,7 +131,7 @@ export default function ExpiryDisplayPanel({
                             <LeftSwipeableContainer
                                 ref={swipeableRef as React.RefObject<SwipeableMethods>}
                                 renderLeftActions={
-                                    (progress, translation, swipeableMethods) => 
+                                    (progress, translation, swipeableMethods) =>
                                         renderExpiredStockLeftAction({
                                             productStock: item,
                                             onSoldButtonPress: onSoldButtonPress,
@@ -113,7 +144,7 @@ export default function ExpiryDisplayPanel({
                                 friction={2}
                                 leftThreshold={20}
                             >
-                                <AlreadyExpiredStockCard currentStock={item} />
+                                <AlreadyExpiredStockCard currentStock={item} onUpdate={handleUpdate} />
                             </LeftSwipeableContainer>
                         </View>
                     )}
@@ -170,12 +201,12 @@ const styles = StyleSheet.create({
         height: '100%',
         backgroundColor: '#e74c3c',
     },
-    swipeableWrapper:{
+    swipeableWrapper: {
         paddingBottom: 120,
     },
     swipeableContainer: {
         paddingHorizontal: layout.screenHorizontalPadding,
         marginBottom: 10,
-        
+
     },
 });
