@@ -298,6 +298,7 @@ const ProductInfoUpdateScreen = () => {
                                 onChangeHandler={(v) => { setPrice(v); setPriceError(false); }}
                                 placeholder="0.00"
                                 keyboardType="decimal-pad"
+                                inputMode="decimal"
                                 editable={true}
                                 inputStyleProps={priceError ? styles.errorInput : undefined}
                             />
@@ -313,6 +314,7 @@ const ProductInfoUpdateScreen = () => {
                                 onChangeHandler={(v) => { setBoxPrice(v); setBoxPriceError(false); }}
                                 placeholder="0.00"
                                 keyboardType="decimal-pad"
+                                inputMode="decimal"
                                 editable={true}
                                 inputStyleProps={boxPriceError ? styles.errorInput : undefined}
                             />

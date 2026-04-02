@@ -1,8 +1,10 @@
 import { apiClient, ServiceResponse } from '../../../../services/ApiService';
-import { StockInRequestParams, StockInResponseParams } from '../models/types';
+import { StockInRequestParams, StockInResponseParams , StockDeleteResponseParams } from '../models/types';
+import { V1ApiResponse } from '../../../shared/api/ApiClient';
 
+//fix this too
 export const stockCreateApi = {
-    stockIn: async (stockData: StockInRequestParams, idempotency_key: string): Promise<ServiceResponse<StockInResponseParams>> => {
+    stockIn: async (stockData: StockInRequestParams, idempotency_key: string): Promise<V1ApiResponse<StockInResponseParams>> => {
         console.log('stockData', stockData);
         try {
 
@@ -14,6 +16,15 @@ export const stockCreateApi = {
             return response.data;
         } catch (error) {
             console.error('Error performing stock in:', error);
+            throw error;
+        }
+    },
+    stockDelete: async (stockId: number): Promise<V1ApiResponse<StockDeleteResponseParams>> => {
+        try {
+            const response = await apiClient.delete(`/api/v1/stocks/delete/${stockId}`);
+            return response.data;
+        } catch (error) {
+            console.error('Error performing stock delete:', error);
             throw error;
         }
     }

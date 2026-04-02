@@ -107,7 +107,6 @@ export const addAuthErrorHandling = (axiosInstance: any, retryConfig: RetryConfi
   axiosInstance.interceptors.request.use(
     async (config: any) => {
       config._retryCount = config._retryCount || 0;
-
       if (isAuthRoute(config?.url)) {
         return config;
       }

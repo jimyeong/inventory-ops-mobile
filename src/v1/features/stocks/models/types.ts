@@ -18,3 +18,7 @@ export type StockInResponseParams = {
     updatedStocks: ProductStock[];
     addedStocks: ProductStock[];
 }
+export type StockDeleteResponseParams = {
+    success: boolean;
+    message: string;
+}
