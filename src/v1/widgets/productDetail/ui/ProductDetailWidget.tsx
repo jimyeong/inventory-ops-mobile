@@ -14,6 +14,7 @@ import Toast from 'react-native-toast-message';
 import ItemService from '../../../../services/ItemService';
 import { TOAST_MESSAGE, TOAST_TYPE } from '../../../constant';
 import IndicatingButton from '../../../shared/ui/Buttons/IndicatingButton';
+import { stockCreateApi } from '../../../features/stocks/api/stocksApi';
 
 type TabType = 'details' | 'stock';
 
@@ -44,11 +45,18 @@ const ProductDetailWidget = ({ productId, product, onRefresh }: ProductDetailWid
     const handleDeleteStock = async (stockId: number) => {
         //TODO: ADD Idempotency key
         try {
-            await ItemService.deleteStock(stockId)
+            const response = await stockCreateApi.stockDelete(stockId);
+            if (response.success) {
             Toast.show({
-                text1: TOAST_MESSAGE.STOCK_DELETED_SUCCESSFULLY,
-                type: TOAST_TYPE.SUCCESS,
-            });
+                    text1: TOAST_MESSAGE.STOCK_DELETED_SUCCESSFULLY,
+                    type: TOAST_TYPE.SUCCESS,
+                });
+            } else {
+                Toast.show({
+                    text1: TOAST_MESSAGE.STOCK_DELETED_FAILED,
+                    type: TOAST_TYPE.ERROR,
+                });
+            }
         } catch (error) {
             Toast.show({
                 text1: TOAST_MESSAGE.STOCK_DELETED_FAILED,
