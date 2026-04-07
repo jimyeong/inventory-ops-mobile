@@ -34,9 +34,11 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>We need camera access to scan barcodes for inventory management</string>
+	<string>To allow customers to upload and register product pictures.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>This app requires location access to provide region-specific product analysis and optimize service performance.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>o allow customers to upload pictures of products for expiry analysis.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Medium.ttf</string>
