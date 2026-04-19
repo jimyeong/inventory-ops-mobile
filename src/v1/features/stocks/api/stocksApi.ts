@@ -6,7 +6,6 @@ import { V1ApiResponse } from '../../../shared/api/ApiClient';
 //fix this too
 export const stockAPI = {
     stockIn: async (stockData: StockInRequestParams, idempotency_key: string): Promise<V1ApiResponse<StockInResponseParams>> => {
-        console.log('stockData', stockData);
         try {
 
             const response = await apiClient.post('/api/v1/stocks/create', stockData, {
@@ -45,5 +44,4 @@ export const stockAPI = {
             throw error;
         }
     }
-
 }

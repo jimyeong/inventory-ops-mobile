@@ -68,8 +68,6 @@ const ProductDetailWidget = ({ productId, product, onRefresh }: ProductDetailWid
     };
 
     const handleStockUpdate = async (stock: ProductStock) => {
-        console.log('stock', stock);
-        //TODO: ADD Idempotency key
         stock.registering_person = userData?.payload.displayName || 'N/A';
         stock.expiry_date = stock.expiry_date;
         
