@@ -22,3 +22,8 @@ export type StockDeleteResponseParams = {
     success: boolean;
     message: string;
 }
+export type StockUpdateRequestParams = ProductStock;
+export type StockUpdateResponseParams = {
+    success: boolean;
+    message: string;
+}

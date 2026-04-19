@@ -9,7 +9,8 @@ import { ITEM_DETAIL_ACTION_TYPES, itemDetailContext } from '../contexts/ItemDet
 import Toast from 'react-native-toast-message';
 import IconButton from '../../../components/Buttons/IconButton';
 import { IndicatorButton } from '../../../components';
-
+import { stockAPI } from '../../../v1/features/stocks/api/stocksApi';
+import { StockUpdateRequestParams } from '../../../v1/features/stocks/models/types';
 interface StockEditFormProps {
     item: ItemStock;
     visible: boolean;
@@ -85,7 +86,7 @@ const StockEditForm: React.FC<StockEditFormProps> = ({
             updateData.expiry_date = expiryDate as Date;
             updateData.location = location;
             updateData.notes = notes;
-            const response = await ItemService.updateStock(stockId, updateData);
+            const response = await stockAPI.stockUpdate(stockId, updateData as StockUpdateRequestParams);
             setLoading(false);
             if (response.success) {
                 Toast.show({

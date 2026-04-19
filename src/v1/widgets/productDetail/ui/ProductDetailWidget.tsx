@@ -14,7 +14,8 @@ import Toast from 'react-native-toast-message';
 import ItemService from '../../../../services/ItemService';
 import { TOAST_MESSAGE, TOAST_TYPE } from '../../../constant';
 import IndicatingButton from '../../../shared/ui/Buttons/IndicatingButton';
-import { stockCreateApi } from '../../../features/stocks/api/stocksApi';
+import { stockAPI } from '../../../features/stocks/api/stocksApi';
+import { StockUpdateRequestParams } from '../../../features/stocks/models/types';
 
 type TabType = 'details' | 'stock';
 
@@ -45,7 +46,7 @@ const ProductDetailWidget = ({ productId, product, onRefresh }: ProductDetailWid
     const handleDeleteStock = async (stockId: number) => {
         //TODO: ADD Idempotency key
         try {
-            const response = await stockCreateApi.stockDelete(stockId);
+            const response = await stockAPI.stockDelete(stockId);
             if (response.success) {
             Toast.show({
                     text1: TOAST_MESSAGE.STOCK_DELETED_SUCCESSFULLY,
@@ -67,16 +68,27 @@ const ProductDetailWidget = ({ productId, product, onRefresh }: ProductDetailWid
     };
 
     const handleStockUpdate = async (stock: ProductStock) => {
+        console.log('stock', stock);
         //TODO: ADD Idempotency key
         stock.registering_person = userData?.payload.displayName || 'N/A';
         stock.expiry_date = stock.expiry_date;
+        
+        const updateData: StockUpdateRequestParams = {
+            ...stock,
+        };
 
         try {
-            const response = await ItemService.updateStock(stock.stock_id, stock);
+            const response = await stockAPI.stockUpdate(stock.stock_id, updateData);
             if (response.success) {
                 Toast.show({
                     text1: TOAST_MESSAGE.STOCK_UPDATED_SUCCESSFULLY,
                     type: TOAST_TYPE.SUCCESS,
+                });
+            }
+            else {
+                Toast.show({
+                    text1: TOAST_MESSAGE.STOCK_UPDATED_FAILED,
+                    type: TOAST_TYPE.ERROR,
                 });
             }
         }
