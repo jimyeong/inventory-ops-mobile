@@ -12,7 +12,7 @@ import { AppUser } from '../../../../services/AuthService';
 import { Platform } from 'react-native';
 import Toast from 'react-native-toast-message';
 import { StockInRequestParams, StockInResponseParams } from '../../../features/stocks/models/types';
-import { stockCreateApi } from '../../../features/stocks/api/stocksApi';
+import { stockAPI } from '../../../features/stocks/api/stocksApi';
 import { ServiceResponse } from '../../../../services/ApiService';
 import { DISCOUNT_RATES, TOAST_TYPE } from '../../../constant';
 import { TOAST_MESSAGE } from '../../../constant';
@@ -84,9 +84,8 @@ const StockInFormWidget = ({ product, userData, handleStockInResult }: StockInFo
         };
         try {
 
-            const response = await stockCreateApi.stockIn(stockData, idempotency_key);
+            const response = await stockAPI.stockIn(stockData, idempotency_key);
             setIsLoading(false);
-            console.log('response success????', response);
             if (response.success) {
                 
                 handleStockInResult({ success: true });
